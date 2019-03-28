@@ -1,12 +1,14 @@
-package com.example.fitnessapp
+package com.example.fitnessapp.view_model
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import com.example.fitnessapp.model.ExerciseType
+import com.example.fitnessapp.R
 
-class ExerciseAdapter(private val items: List<Exercise>) : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
+class ExerciseAdapter(private val items: List<ExerciseType>) : RecyclerView.Adapter<ExerciseAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)

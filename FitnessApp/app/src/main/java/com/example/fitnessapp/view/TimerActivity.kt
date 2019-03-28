@@ -1,10 +1,10 @@
-package com.example.fitnessapp
+package com.example.fitnessapp.view
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import kotlinx.android.synthetic.main.activity_exerice_in_progress.*
+import com.example.fitnessapp.R
 
-class ExericeInProgress : AppCompatActivity() {
+class TimerActivity : AppCompatActivity() {
 
     var timer : Int = 30
 
