@@ -6,17 +6,29 @@ import android.os.AsyncTask
 import androidx.lifecycle.LiveData
 import com.example.fitnessapp.database.data.Exercise
 import com.example.fitnessapp.database.data.ExerciseDao
-import com.example.fitnessapp.database.data.ExerciseDatabase
+import com.example.fitnessapp.database.data.FitnessDatabase
 
 class ExerciseRepository(application: Application) {
 
     private var exercisesDao: ExerciseDao
     private var exercises: LiveData<List<Exercise>>
 
+    companion object {
+        private var INSTANCE: ExerciseRepository? = null
+
+        fun getInstance(application: Application): ExerciseRepository {
+            if (INSTANCE == null) {
+                synchronized(ExerciseRepository::class) {
+                    INSTANCE = ExerciseRepository(application)
+                }
+            }
+            return INSTANCE!!
+        }
+    }
 
     init {
-        val db = ExerciseDatabase.getInstance(application)
-        exercisesDao = db!!.exerciseDataDao()
+        val db = FitnessDatabase.getInstance(application)
+        exercisesDao = db!!.exerciseDao()
         exercises = exercisesDao.findAll()
     }
 

@@ -6,11 +6,12 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "exercise")
 data class Exercise(
-        @PrimaryKey(autoGenerate = true)
-        var id: Int = 0,
-        var name : String,
-        var minutes : Int,
-        var seconds : Int)
+    var name: String,
+    var minutes: Int,
+    var seconds: Int,
+    @PrimaryKey(autoGenerate = true)
+    var exerciseId: Int = 0
+)
 
 
 

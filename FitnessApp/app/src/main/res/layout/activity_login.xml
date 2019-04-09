@@ -2,18 +2,66 @@
 <RelativeLayout
 		xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:tools="http://schemas.android.com/tools"
-		xmlns:app="http://schemas.android.com/apk/res-auto"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
 		tools:context=".view.LoginActivity"
-		android:background="#000000"
+		android:background="#282828"
 		>
 
 	<ImageView
-			android:layout_width="match_parent"
-			android:layout_height="match_parent"
-			android:src="@drawable/logo"
+			android:id="@+id/logo"
+			android:layout_width="250dp"
+			android:layout_height="250dp"
+			android:src="@drawable/lionlogo"
+			android:layout_centerHorizontal="true"
+			android:layout_marginTop="20dp"
 			/>
+
+	<EditText
+			android:id="@+id/emailLogin"
+			android:layout_width="250dp"
+			android:layout_height="39dp"
+			android:layout_below="@+id/logo"
+			android:layout_centerInParent="true"
+			android:layout_marginTop="40dp"
+			android:backgroundTint="#92FFFFFF"
+			android:hint="@string/email"
+			android:textColor="#92FFFFFF"
+			android:textColorHint="#92FFFFFF"
+			android:paddingStart="10dp"
+			android:inputType="textEmailAddress"/>
+
+	<EditText
+			android:id="@+id/pwdLogin"
+			android:layout_width="250dp"
+			android:layout_height="39dp"
+			android:layout_below="@+id/emailLogin"
+			android:layout_centerInParent="true"
+			android:layout_marginTop="25dp"
+			android:backgroundTint="#92FFFFFF"
+			android:hint="@string/password"
+			android:textColor="#4BFFFFFF"
+			android:textColorHint="#92FFFFFF"
+			android:paddingStart="10dp"
+			android:inputType="textEmailAddress"/>
+	
+	<Button
+			android:id="@+id/buttonLogin"
+			android:layout_width="250dp"
+			android:layout_height="45dp"
+			android:background="@drawable/rounded_button"
+			android:layout_below="@+id/pwdLogin"
+			android:layout_centerInParent="true"
+			android:layout_marginTop="100dp"
+			android:textColor="#92FFFFFF"
+			android:textColorHint="#4BFFFFFF"
+			android:text="@string/login"
+			android:textSize="15sp"
+			android:onClick="login"
+			/>
+
+
+
 
 
 </RelativeLayout>
