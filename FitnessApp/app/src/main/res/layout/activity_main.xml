@@ -1,37 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
 		xmlns:app="http://schemas.android.com/apk/res-auto"
-		xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".view.ListActivity"
-        android:background="#FFFFFF"
-        >
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:id="@+id/drawer">
 
-	<ImageView
-			android:id="@+id/img"
+	<LinearLayout
 			android:layout_width="match_parent"
-			android:layout_height="245dp"
-			android:src="@drawable/test"
+			android:layout_height="match_parent"
+			android:orientation="vertical">
+
+		<androidx.appcompat.widget.Toolbar
+				android:id="@+id/toolbar"
+				android:layout_width="match_parent"
+				android:layout_height="?attr/actionBarSize"
+				android:background="?attr/colorPrimary"
+				android:elevation="4dp"
+				app:theme="@style/ThemeOverlay.AppCompat.Light"
+				app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+
+		<fragment
+				android:id="@+id/nav_host_fragment"
+				android:name="androidx.navigation.fragment.NavHostFragment"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+
+				app:defaultNavHost="true"
+				app:navGraph="@navigation/nav_graph"
+				/>
+
+	</LinearLayout>
+
+
+
+	<com.google.android.material.navigation.NavigationView
+			android:id="@+id/navView"
+			android:layout_height="match_parent"
+			android:layout_width="wrap_content"
+			android:layout_gravity="start"
+			app:headerLayout="@layout/nav_header"
+			app:menu="@menu/nav_drawer_menu"
 			/>
 
-    <android.support.v7.widget.RecyclerView
-			android:layout_below="@+id/img"
-            android:id="@+id/exercise_list"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
-	<android.support.design.widget.FloatingActionButton
-			android:id="@+id/fab"
-			android:layout_width="150dp"
-			android:layout_height="150dp"
-			android:layout_gravity="end|bottom"
-			android:layout_alignParentBottom="true"
-			android:layout_alignParentEnd="true"
-			android:layout_marginEnd="50dp"
-			android:layout_marginBottom="50dp"
-			android:src="@drawable/start_icon"
-			/>
-
-</RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

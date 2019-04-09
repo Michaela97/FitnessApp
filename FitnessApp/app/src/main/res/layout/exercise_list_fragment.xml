@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		tools:context=".view.ExerciseListFragment"
+		android:background="#FFFFFF"
+		>
+
+	<ImageView
+			android:id="@+id/img"
+			android:layout_width="match_parent"
+			android:layout_height="245dp"
+			android:src="@drawable/test"
+			/>
+
+	<androidx.recyclerview.widget.RecyclerView
+			android:layout_below="@+id/img"
+			android:id="@+id/exerciseList"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent" />
+
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
+			android:id="@+id/fab"
+			android:layout_width="60dp"
+			android:layout_height="60dp"
+			android:layout_gravity="end|bottom"
+			android:layout_alignParentBottom="true"
+			android:layout_alignParentEnd="true"
+			android:layout_marginEnd="50dp"
+			android:layout_marginBottom="50dp"
+			android:src="@drawable/start_icon"
+			app:fabSize="normal"
+			/>
+
+</RelativeLayout>
