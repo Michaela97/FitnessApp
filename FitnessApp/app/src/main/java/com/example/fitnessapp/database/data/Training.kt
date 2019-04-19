@@ -15,14 +15,13 @@ data class Training(
 
     var duration: Int = 0
     @Ignore
-    var exercises: MutableList<TrainingExercise> = mutableListOf()
+    var exercises: MutableList<Exercise> = mutableListOf()
 
 
     fun addExercises(exercises: List<Exercise>) {
-        exercises.forEach {
-            this.exercises.add(TrainingExercise(trainingId, it))
-            duration += (it.minutes * 60) + it.seconds
-        }
+        this.exercises.addAll(exercises)
+        duration = this.exercises.sumBy { it.minutes + it.seconds }
     }
 
 }
+

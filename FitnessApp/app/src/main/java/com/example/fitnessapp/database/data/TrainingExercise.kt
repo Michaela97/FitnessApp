@@ -7,8 +7,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "training_exercise")
 data class TrainingExercise(
     var trainingId: Int,
-    @Embedded //inside of an entity
-    var exercise: Exercise,
+    var exerciseId: Int,
     @PrimaryKey(autoGenerate = true)
     var teId : Int = 0
 )

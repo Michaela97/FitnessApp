@@ -5,13 +5,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnessapp.ExerciseListViewModel
 import com.example.fitnessapp.R
-import com.example.fitnessapp.view_model.util.ListAdapter
+import com.example.fitnessapp.view_model.util.ExerciseListAdapter
 import kotlinx.android.synthetic.main.exercise_list_fragment.*
 
 
@@ -32,12 +33,12 @@ class ExerciseListFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(ExerciseListViewModel::class.java)
 
         if (savedInstanceState == null) {
-            viewModel.init()
+            viewModel.init(arguments!!)
         }
 
         exerciseList.hasFixedSize()
         exerciseList.layoutManager = LinearLayoutManager(exerciseList.context)
-        val adapter = ListAdapter()
+        val adapter = ExerciseListAdapter()
         exerciseList.adapter = adapter
         viewModel.getAllExercises().observe(this, Observer {adapter.setExercises(it)})
 

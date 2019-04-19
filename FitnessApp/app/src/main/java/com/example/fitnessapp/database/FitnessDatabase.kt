@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.fitnessapp.database.TrainingDao
 
-@Database(entities = [Exercise::class, Training::class, TrainingExercise::class], version = 2)
+@Database(entities = [Exercise::class, Training::class, TrainingExercise::class], version = 8)
 abstract class FitnessDatabase : RoomDatabase() {
 
     abstract fun exerciseDao(): ExerciseDao
@@ -50,7 +50,7 @@ abstract class FitnessDatabase : RoomDatabase() {
                 val trainingDao = db.trainingDao()
 
                 exerciseDao.deleteAll()
-                trainingDao.deleteAll()
+                trainingDao.deleteAllTraining()
                 val exercises = listOf(
                     Exercise(name = "plank", minutes = 1, seconds = 0),
                     Exercise(name = "squat", minutes = 1, seconds = 0),
@@ -61,7 +61,17 @@ abstract class FitnessDatabase : RoomDatabase() {
                     Exercise(name = "jumping squat", minutes = 1, seconds = 0),
                     Exercise(name = "jack plank", minutes = 1, seconds = 0),
                     Exercise(name = "side push up", minutes = 1, seconds = 0),
-                    Exercise(name = "yoga push up", minutes = 1, seconds = 0)
+                    Exercise(name = "yoga push up", minutes = 1, seconds = 0),
+                    Exercise(name = "plank", minutes = 1, seconds = 0),
+                    Exercise(name = "squat", minutes = 1, seconds = 0),
+                    Exercise(name = "push up", minutes = 1, seconds = 0),
+                    Exercise(name = "jumps", minutes = 1, seconds = 0),
+                    Exercise(name = "crowding", minutes = 1, seconds = 0),
+                    Exercise(name = "plank", minutes = 1, seconds = 0),
+                    Exercise(name = "squat", minutes = 1, seconds = 0),
+                    Exercise(name = "push up", minutes = 1, seconds = 0),
+                    Exercise(name = "jumps", minutes = 1, seconds = 0),
+                    Exercise(name = "crowding", minutes = 1, seconds = 0)
                 )
                 exercises.forEach { exerciseDao.insert(it) }
 
@@ -70,9 +80,9 @@ abstract class FitnessDatabase : RoomDatabase() {
 
                 trainingDao.insert(training)
 
-                val trainings = trainingDao.findAll().value
-                trainings?.forEach { Log.d("Trainings", it.toString()) }
-                Log.d("Trainings", trainings?.toString())
+//                val trainings = trainingDao.findAll().value
+//                trainings?.forEach { Log.d("Trainings", it.toString()) }
+//                Log.d("Trainings", trainings?.toString())
 
             }
         }

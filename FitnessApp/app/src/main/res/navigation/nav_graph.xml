@@ -3,11 +3,20 @@
 			xmlns:app="http://schemas.android.com/apk/res-auto"
 			xmlns:tools="http://schemas.android.com/tools"
 			android:id="@+id/nav_graph"
-			app:startDestination="@id/exerciseListFragment">
+			app:startDestination="@id/trainingListFragment">
 
 	<fragment
 			android:id="@+id/exerciseListFragment"
 			android:name="com.example.fitnessapp.view.ExerciseListFragment"
 			android:label="exercise_list_fragment"
 			tools:layout="@layout/exercise_list_fragment"/>
+	<fragment
+			android:id="@+id/trainingListFragment"
+			android:name="com.example.fitnessapp.view.TrainingListFragment"
+			android:label="training_list_fragment"
+			tools:layout="@layout/training_list_fragment">
+		<action
+				android:id="@+id/action_trainingListFragment_to_exerciseListFragment"
+				app:destination="@id/exerciseListFragment"/>
+	</fragment>
 </navigation>

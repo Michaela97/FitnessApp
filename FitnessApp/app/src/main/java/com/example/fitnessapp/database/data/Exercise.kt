@@ -9,6 +9,7 @@ data class Exercise(
     var name: String,
     var minutes: Int,
     var seconds: Int,
+   //s var trainingId: Int = 0,
     @PrimaryKey(autoGenerate = true)
     var exerciseId: Int = 0
 )

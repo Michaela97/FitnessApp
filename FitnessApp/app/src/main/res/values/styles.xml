@@ -15,4 +15,10 @@
         <item name="android:paddingStart">20dp</item>
     </style>
 
+    <style name="TrainingName">
+        <item name="android:textSize">30sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:gravity">center</item>
+    </style>
+
 </resources>

@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
 import com.example.fitnessapp.database.data.Exercise
 
-class ListAdapter : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
+class ExerciseListAdapter : RecyclerView.Adapter<ExerciseListAdapter.ViewHolder>() {
 
     private var exercises : List<Exercise>? = null
     companion object {
-        const val TAG = "ListAdapter"
+        const val TAG = "ExerciseListAdapter"
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

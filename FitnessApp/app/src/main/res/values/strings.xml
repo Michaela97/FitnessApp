@@ -1,7 +1,7 @@
 <resources>
 	<string name="app_name">FitnessApp</string>
-	<string name="profile">profile</string>
-	<string name="create_training">create training</string>
+	<string name="profile">PROFILE</string>
+	<string name="create_training">Create training</string>
 	<string name="open">open</string>
 	<string name="close">close</string>
 	<string name="email">Email</string>
