@@ -1,4 +1,4 @@
-package com.example.fitnessapp.database.data
+package com.example.fitnessapp.database
 
 import android.content.Context
 import android.os.AsyncTask
@@ -7,13 +7,15 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.fitnessapp.database.TrainingDao
+import androidx.lifecycle.Observer
+import com.example.fitnessapp.database.data.Exercise
+import com.example.fitnessapp.database.data.FitnessDao
+import com.example.fitnessapp.database.data.Training
 
-@Database(entities = [Exercise::class, Training::class, TrainingExercise::class], version = 8)
+@Database(entities = [Exercise::class, Training::class], version = 1)
 abstract class FitnessDatabase : RoomDatabase() {
 
-    abstract fun exerciseDao(): ExerciseDao
-    abstract fun trainingDao() : TrainingDao
+    abstract fun fitnessDao(): FitnessDao
 
     companion object {
         private var INSTANCE: FitnessDatabase? = null
@@ -25,10 +27,12 @@ abstract class FitnessDatabase : RoomDatabase() {
                         context.applicationContext,
                         FitnessDatabase::class.java, "exercise.db"
                     )
+                        .allowMainThreadQueries()
                         .fallbackToDestructiveMigration()
                         .addCallback(exerciseDatabaseCallback)
                         .build()
                 }
+                InitDbAsync(INSTANCE!!).execute()
             }
             return INSTANCE
         }
@@ -40,17 +44,15 @@ abstract class FitnessDatabase : RoomDatabase() {
 
         private val exerciseDatabaseCallback = object : RoomDatabase.Callback() {
             override fun onOpen(db: SupportSQLiteDatabase) {
+                super.onOpen(db)
                 PopulateDbAsync(INSTANCE!!).execute()
             }
         }
 
         private class PopulateDbAsync(val db: FitnessDatabase) : AsyncTask<Unit, Unit, Unit>() {
             override fun doInBackground(vararg params: Unit?) {
-                val exerciseDao = db.exerciseDao()
-                val trainingDao = db.trainingDao()
-
-                exerciseDao.deleteAll()
-                trainingDao.deleteAllTraining()
+                val fitnessDao = db.fitnessDao()
+                fitnessDao.deleteAll()
                 val exercises = listOf(
                     Exercise(name = "plank", minutes = 1, seconds = 0),
                     Exercise(name = "squat", minutes = 1, seconds = 0),
@@ -73,18 +75,19 @@ abstract class FitnessDatabase : RoomDatabase() {
                     Exercise(name = "jumps", minutes = 1, seconds = 0),
                     Exercise(name = "crowding", minutes = 1, seconds = 0)
                 )
-                exercises.forEach { exerciseDao.insert(it) }
+
 
                 val training = Training("Test Training")
-                training.addExercises(exercises)
-
-                trainingDao.insert(training)
-
-//                val trainings = trainingDao.findAll().value
-//                trainings?.forEach { Log.d("Trainings", it.toString()) }
-//                Log.d("Trainings", trainings?.toString())
-
+                fitnessDao.insertTrainingWithExercises(training, exercises)
+                Log.d("FitDB", "Exercises were inserted")
             }
         }
+    }
+}
+
+private class InitDbAsync(val db: FitnessDatabase) : AsyncTask<Unit, Unit, Unit>() {
+    override fun doInBackground(vararg params: Unit?) {
+        db.beginTransaction()
+        db.endTransaction()
     }
 }

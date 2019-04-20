@@ -1,7 +1,6 @@
 package com.example.fitnessapp.database.data
 
 import androidx.room.Entity
-import androidx.room.Ignore
 import androidx.room.PrimaryKey
 
 
@@ -10,18 +9,5 @@ data class Training(
     var title: String,
     @PrimaryKey(autoGenerate = true)
     var trainingId: Int = 0
-) {
-
-
-    var duration: Int = 0
-    @Ignore
-    var exercises: MutableList<Exercise> = mutableListOf()
-
-
-    fun addExercises(exercises: List<Exercise>) {
-        this.exercises.addAll(exercises)
-        duration = this.exercises.sumBy { it.minutes + it.seconds }
-    }
-
-}
+)
 
