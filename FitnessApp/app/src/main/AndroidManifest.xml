@@ -10,7 +10,8 @@
             android:roundIcon="@mipmap/ic_lion_icon_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.MainActivity"
+                  android:screenOrientation="portrait">
         </activity>
         <activity android:name=".view.LoginActivity"
                   android:screenOrientation="portrait">

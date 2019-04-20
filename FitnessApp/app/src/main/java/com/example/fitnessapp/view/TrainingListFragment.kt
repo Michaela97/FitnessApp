@@ -22,9 +22,6 @@ import kotlinx.android.synthetic.main.training_list_fragment.*
 class TrainingListFragment : Fragment() {
 
     private lateinit var viewModel: TrainingListViewModel
-    companion object {
-        const val EXERCISES = "EXERCISES"
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +38,6 @@ class TrainingListFragment : Fragment() {
             viewModel.init()
         }
 
-        //trainingList.hasFizedSize()
         trainingList.layoutManager = LinearLayoutManager(trainingList.context)
         val adapter = TrainingListAdapter(viewModel)
         trainingList.adapter = adapter

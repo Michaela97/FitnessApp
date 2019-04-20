@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
 import com.example.fitnessapp.database.data.Exercise
@@ -57,6 +58,7 @@ class ExerciseListAdapter : RecyclerView.Adapter<ExerciseListAdapter.ViewHolder>
 
         override fun onClick(view : View?) {
             listener.invoke(adapterPosition)
+
         }
     }
 

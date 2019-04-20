@@ -14,7 +14,6 @@ class FitnessRepository(application: Application) {
 
     private var fitnessDao: FitnessDao
     private var trainings: LiveData<List<Training>>
-    private var exerciseMediator = MediatorLiveData<List<Exercise>>()
 
     companion object {
         private var INSTANCE: FitnessRepository? = null

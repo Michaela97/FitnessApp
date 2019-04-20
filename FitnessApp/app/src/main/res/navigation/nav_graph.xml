@@ -9,7 +9,11 @@
 			android:id="@+id/exerciseListFragment"
 			android:name="com.example.fitnessapp.view.ExerciseListFragment"
 			android:label="exercise_list_fragment"
-			tools:layout="@layout/exercise_list_fragment"/>
+			tools:layout="@layout/exercise_list_fragment">
+		<action
+				android:id="@+id/action_exerciseListFragment_to_timerFragment"
+				app:destination="@id/timerFragment"/>
+	</fragment>
 	<fragment
 			android:id="@+id/trainingListFragment"
 			android:name="com.example.fitnessapp.view.TrainingListFragment"
@@ -19,4 +23,9 @@
 				android:id="@+id/action_trainingListFragment_to_exerciseListFragment"
 				app:destination="@id/exerciseListFragment"/>
 	</fragment>
+	<fragment
+			android:id="@+id/timerFragment"
+			android:name="com.example.fitnessapp.view.TimerFragment"
+			android:label="timer_fragment"
+			tools:layout="@layout/timer_fragment"/>
 </navigation>

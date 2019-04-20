@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fitnessapp.ExerciseListViewModel
 import com.example.fitnessapp.R
@@ -21,10 +22,12 @@ class ExerciseListFragment : Fragment() {
 
     private lateinit var viewModel: ExerciseListViewModel
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         return inflater.inflate(R.layout.exercise_list_fragment, container, false)
     }
 
@@ -36,14 +39,24 @@ class ExerciseListFragment : Fragment() {
             viewModel.init(arguments!!)
         }
 
+        fab.setOnClickListener{view -> viewModel.startTimer(view)}
+
         exerciseList.hasFixedSize()
         exerciseList.layoutManager = LinearLayoutManager(exerciseList.context)
         val adapter = ExerciseListAdapter()
         exerciseList.adapter = adapter
         viewModel.getAllExercises().observe(this, Observer {adapter.setExercises(it)})
 
+
+
     }
 
 
 
+
+
+
+
 }
+
+
