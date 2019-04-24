@@ -7,12 +7,11 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import androidx.lifecycle.Observer
 import com.example.fitnessapp.database.data.Exercise
 import com.example.fitnessapp.database.data.FitnessDao
 import com.example.fitnessapp.database.data.Training
 
-@Database(entities = [Exercise::class, Training::class], version = 1)
+@Database(entities = [Exercise::class, Training::class], version = 3)
 abstract class FitnessDatabase : RoomDatabase() {
 
     abstract fun fitnessDao(): FitnessDao
@@ -54,26 +53,26 @@ abstract class FitnessDatabase : RoomDatabase() {
                 val fitnessDao = db.fitnessDao()
                 fitnessDao.deleteAll()
                 val exercises = listOf(
-                    Exercise(name = "plank", minutes = 1, seconds = 0),
-                    Exercise(name = "squat", minutes = 1, seconds = 0),
-                    Exercise(name = "push up", minutes = 1, seconds = 0),
-                    Exercise(name = "jumps", minutes = 1, seconds = 0),
-                    Exercise(name = "crowding", minutes = 1, seconds = 0),
-                    Exercise(name = "plank on chair", minutes = 1, seconds = 0),
-                    Exercise(name = "jumping squat", minutes = 1, seconds = 0),
-                    Exercise(name = "jack plank", minutes = 1, seconds = 0),
-                    Exercise(name = "side push up", minutes = 1, seconds = 0),
-                    Exercise(name = "yoga push up", minutes = 1, seconds = 0),
-                    Exercise(name = "plank", minutes = 1, seconds = 0),
-                    Exercise(name = "squat", minutes = 1, seconds = 0),
-                    Exercise(name = "push up", minutes = 1, seconds = 0),
-                    Exercise(name = "jumps", minutes = 1, seconds = 0),
-                    Exercise(name = "crowding", minutes = 1, seconds = 0),
-                    Exercise(name = "plank", minutes = 1, seconds = 0),
-                    Exercise(name = "squat", minutes = 1, seconds = 0),
-                    Exercise(name = "push up", minutes = 1, seconds = 0),
-                    Exercise(name = "jumps", minutes = 1, seconds = 0),
-                    Exercise(name = "crowding", minutes = 1, seconds = 0)
+                    Exercise(name = "plank"),
+                    Exercise(name = "squat"),
+                    Exercise(name = "push up"),
+                    Exercise(name = "jumps"),
+                    Exercise(name = "crowding"),
+                    Exercise(name = "plank on chair"),
+                    Exercise(name = "jumping squat"),
+                    Exercise(name = "jack plank"),
+                    Exercise(name = "side push up"),
+                    Exercise(name = "yoga push up"),
+                    Exercise(name = "plank"),
+                    Exercise(name = "squat"),
+                    Exercise(name = "push up"),
+                    Exercise(name = "jumps"),
+                    Exercise(name = "crowding"),
+                    Exercise(name = "plank"),
+                    Exercise(name = "squat"),
+                    Exercise(name = "push up"),
+                    Exercise(name = "jumps"),
+                    Exercise(name = "crowding")
                 )
 
 

@@ -22,6 +22,12 @@ abstract class FitnessDao {
         }
     }
 
+    @Delete
+    abstract fun deleteExercise(exercise: Exercise)
+
+    @Delete
+    abstract fun deleteTraining(training: Training)
+
     @Query("delete from exercise")
     abstract fun deleteAllExercises()
 

@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var toggle : ActionBarDrawerToggle
     private lateinit var navController : NavController
 
+    //main activity is just initializing navigation drawer
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

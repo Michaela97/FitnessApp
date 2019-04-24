@@ -3,14 +3,17 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.TextView
 import android.widget.Toast
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fitnessapp.ExerciseListViewModel
 import com.example.fitnessapp.R
 import com.example.fitnessapp.database.data.Exercise
+import kotlinx.android.synthetic.main.exercises_list_item.view.*
 
-class ExerciseListAdapter : RecyclerView.Adapter<ExerciseListAdapter.ViewHolder>() {
+class ExerciseListAdapter(val viewModel: ExerciseListViewModel) : RecyclerView.Adapter<ExerciseListAdapter.ViewHolder>() {
 
     private var exercises : List<Exercise>? = null
     companion object {
@@ -38,7 +41,6 @@ class ExerciseListAdapter : RecyclerView.Adapter<ExerciseListAdapter.ViewHolder>
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         if (exercises!=null) {
             viewHolder.name.text = exercises!![position].name
-            viewHolder.time.text = exercises!![position].minutes.toString()
 
         } else {
             Log.d(TAG, "TODO")
@@ -46,19 +48,18 @@ class ExerciseListAdapter : RecyclerView.Adapter<ExerciseListAdapter.ViewHolder>
     }
 
 
-    class ViewHolder(itemView: View, private val listener: (Int) -> Unit) :
+    inner class ViewHolder(itemView: View, private val listener: (Int) -> Unit) :
         RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var name : TextView = itemView.findViewById(R.id.exerciseName)
-        var time : TextView = itemView.findViewById(R.id.exerciseTime)
-
+        var deleteButton : ImageButton = itemView.findViewById(R.id.deleteExercise)
 
         init {
             itemView.setOnClickListener(this)
+            deleteButton.setOnClickListener { viewModel.deleteExercise(exercises!![adapterPosition]) }
         }
 
         override fun onClick(view : View?) {
             listener.invoke(adapterPosition)
-
         }
     }
 

@@ -13,7 +13,7 @@
 
 	<TextView
 			android:id="@+id/exerciseName"
-			android:text="plank"
+			android:text="temp exercise"
 			style="@style/ExerciseName"
 			android:layout_width="221dp"
 			android:layout_height="match_parent"
@@ -21,12 +21,12 @@
 
 			/>
 
-		<TextView
-				android:id="@+id/exerciseTime"
-				android:text="1min"
+		<ImageButton
+				android:id="@+id/deleteExercise"
 				android:layout_width="100dp"
 				android:layout_height="70dp"
-				style="@style/ExerciseName"
+				android:src="@drawable/ic_delete"
+				android:background="?android:selectableItemBackground"
 				/>
 
 </LinearLayout>

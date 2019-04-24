@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fitnessapp.R
 import com.example.fitnessapp.database.data.Training
@@ -45,11 +46,40 @@ class TrainingListAdapter(val viewModel : TrainingListViewModel) : RecyclerView.
 
         init {
             itemView.setOnClickListener(this)
+
         }
 
         override fun onClick(v: View) {
             viewModel.openExerciseList(adapterPosition, v)
+
         }
 
+
+
     }
+
+    //it will be shown before deleting
+    fun areYouSureDialog(view : View, position : Int) {
+        val builder = AlertDialog.Builder(view.context)
+
+        // Set the alert dialog title
+        builder.setTitle("Are you sure you want to delete this training?")
+        // Display a message on alert dialog
+        builder.setMessage("After pressing YES button, training will be deleted from the database")
+
+        // Set a positive button and its click listener on alert dialog
+        builder.setPositiveButton("YES") { dialog, which ->
+            viewModel.deleteTraining(trainings!![position])
+
+        }
+        builder.setNegativeButton("No"){dialog,which ->
+            dialog.cancel()
+        }
+
+        val dialog: AlertDialog = builder.create()
+
+        // Display the alert dialog on app interface
+        dialog.show()
+    }
+
 }

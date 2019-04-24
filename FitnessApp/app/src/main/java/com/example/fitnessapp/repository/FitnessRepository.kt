@@ -3,8 +3,6 @@ package com.example.fitnessapp.repository
 import android.app.Application
 import android.os.AsyncTask
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.fitnessapp.database.data.Exercise
 import com.example.fitnessapp.database.FitnessDatabase
 import com.example.fitnessapp.database.data.FitnessDao
@@ -40,18 +38,47 @@ class FitnessRepository(application: Application) {
         return fitnessDao.getAllExercisesByTrainingId(trainingID)
     }
 
-    fun insertTrainingWithExercises(training: Training, exercises: List<Exercise>) {
-        InsertAsyncTask(fitnessDao).execute(TrainingWithExercises(training, exercises))
+    fun insertTraining(training: Training) {
+        InsertTrainingAsyncTask(fitnessDao).execute(training)
     }
 
+    fun insertExercise(exercise: Exercise) {
+        InsertExerciseAsyncTask(fitnessDao).execute(exercise)
+    }
 
-    private class InsertAsyncTask(val fitnessDao: FitnessDao) : AsyncTask<TrainingWithExercises, Unit, Unit>() {
-        override fun doInBackground(vararg trainingWithExercises: TrainingWithExercises?) {
-            val (training, exercises) = trainingWithExercises[0]!!
-            fitnessDao.insertTrainingWithExercises(training, exercises)
+    fun deleteTraining(training: Training) {
+        DeleteTrainingAsyncTask(fitnessDao).execute(training)
+    }
+
+    fun deleteExercise(exercise: Exercise) {
+        DeleteExerciseAsyncTask(fitnessDao).execute(exercise)
+    }
+
+    private class InsertTrainingAsyncTask(val fitnessDao: FitnessDao) : AsyncTask<Training, Unit, Unit>() {
+        override fun doInBackground(vararg training: Training?) {
+            val training = training[0]!!
+            fitnessDao.insertTraining(training)
         }
     }
 
-}
+    private class InsertExerciseAsyncTask(val fitnessDao: FitnessDao) : AsyncTask<Exercise, Unit, Unit>() {
+        override fun doInBackground(vararg exercises: Exercise?) {
+            val exercise = exercises[0]!!
+            fitnessDao.insertExercise(exercise)
+        }
+    }
 
-data class TrainingWithExercises(val training: Training, val exercises: List<Exercise>)
+    private class DeleteExerciseAsyncTask(val fitnessDao: FitnessDao) : AsyncTask<Exercise, Unit, Unit>() {
+        override fun doInBackground(vararg exercises: Exercise?) {
+            val exercise = exercises[0]!!
+            fitnessDao.deleteExercise(exercise)
+        }
+    }
+
+    private class DeleteTrainingAsyncTask(val fitnessDao: FitnessDao) : AsyncTask<Training, Unit, Unit>() {
+        override fun doInBackground(vararg training: Training?) {
+            val training = training[0]!!
+            fitnessDao.deleteTraining(training)
+        }
+    }
+}

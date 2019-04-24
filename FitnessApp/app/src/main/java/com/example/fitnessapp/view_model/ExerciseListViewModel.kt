@@ -2,6 +2,7 @@ package com.example.fitnessapp
 
 import android.app.Application
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
@@ -33,5 +34,14 @@ class ExerciseListViewModel(application: Application) : AndroidViewModel(applica
         Navigation.findNavController(view).navigate(R.id.timerFragment, bundle)
     }
 
+    fun addExercise(exercise: String) {
+        var exercise = Exercise(exercise, trainingID)
+        fitnessRepository.insertExercise(exercise)
+        Log.d("ELVM", exercise.toString() + "training ID : " + trainingID.toString())
+    }
+
+    fun deleteExercise(exercise: Exercise) {
+        fitnessRepository.deleteExercise(exercise)
+    }
 
 }
