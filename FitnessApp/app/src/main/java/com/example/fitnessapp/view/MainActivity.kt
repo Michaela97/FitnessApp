@@ -1,5 +1,6 @@
 package com.example.fitnessapp.view
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.view.MenuItem
@@ -11,6 +12,7 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.fitnessapp.R
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -40,8 +42,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.profile -> {
                 Toast.makeText(this, "Profile in progress", Toast.LENGTH_SHORT).show()
             }
-            R.id.addTraining -> {
-                Toast.makeText(this, "Creating training in progress", Toast.LENGTH_SHORT).show()
+            R.id.app -> {
+                val intent = Intent(this, AboutApp::class.java)
+                startActivity(intent)
+            }
+            R.id.logout -> {
+                FirebaseAuth.getInstance().signOut()
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
             }
         }
 

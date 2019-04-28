@@ -30,13 +30,14 @@ class TimerViewModel(application: Application) : AndroidViewModel(application) {
         }
 
         override fun onFinish() {
-            if (listIterator.hasNext()){
+            if (listIterator.hasNext()) {
 
                 name.value = listIterator.next().name
                 restart()
-        } else
+            } else {
                 name.value = "Finished. Good Job!"
                 visible.value = true
+            }
 
         }
     }
@@ -49,7 +50,7 @@ class TimerViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    fun restart(){
+    fun restart() {
         countDownTimer.start()
     }
 
@@ -60,7 +61,6 @@ class TimerViewModel(application: Application) : AndroidViewModel(application) {
         name.value = listIterator.next().name
         countDownTimer.start()
     }
-
 
 
 }

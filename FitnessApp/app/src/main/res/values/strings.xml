@@ -10,4 +10,13 @@
 	<string name="validation_empty">validation empty</string>
 	<string name="training_title">Training title</string>
 	<string name="start_again">start again</string>
+	<string name="username">Username</string>
+	<string name="register">register</string>
+	<string name="create_account">create account</string>
+	<string name="set_timer">set timer</string>
+
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
+	<string name="info">This app is providing list of Tabata training where each exercise has 30 seconds. In the next update, user will be able to set up the time of the exercise and specified number of repetition in the training. User will be able to also add measurements to his profile with a picture of himself/ herself</string>
+	<string name="name">name</string>
 </resources>

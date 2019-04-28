@@ -50,38 +50,37 @@ class TrainingListFragment : Fragment() {
     }
 
     //alert dialog with input
+
     private fun showAddTrainingDialog() {
         val builder = AlertDialog.Builder(context!!)
         builder.setTitle("Create training")
 
         val view = layoutInflater.inflate(R.layout.add_dialog, null)
 
-        val trainingEditText = view.findViewById(R.id.categoryEditText) as EditText
+        val exerciseEditText = view.findViewById(R.id.categoryEditText) as EditText
 
         builder.setView(view)
 
         // set up the ok button
         builder.setPositiveButton(android.R.string.ok) { dialog, _ ->
-            val newTraining = trainingEditText.text
+            val newExercise = exerciseEditText.text
             var isValid = true
-            if (newTraining.isBlank()) {
-                trainingEditText.error = getString(R.string.validation_empty)
+            if (newExercise.isBlank()) {
+                exerciseEditText.error = getString(R.string.validation_empty)
                 isValid = false
             }
 
             if (isValid) {
-                viewModel.addTraining(trainingEditText.text.toString())
+                viewModel.addTraining(exerciseEditText.text.toString())
                 dialog.dismiss()
             }
-
-            builder.setNegativeButton(android.R.string.cancel) { dialog, p1 ->
-                dialog.cancel()
-            }
-
-            builder.show()
         }
 
+        builder.setNegativeButton(android.R.string.cancel) { dialog, _ ->
+            dialog.cancel()
+        }
 
+        builder.show()
     }
 }
 
